@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Scores</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', {'packages':['table']});
+        google.charts.setOnLoadCallback(drawTable);
+
+        function drawTable() {
+            const query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/gviz/tq');
+
+            // Fetch Column K only
+            query.setQuery('SELECT K');
+            query.send(handleResponse);
+        }
+
+        function handleResponse(response) {
+            if (response.isError()) {
+                document.getElementById('table-div').innerHTML = "Error loading data: " + response.getMessage();
+                return;
+            }
+
+            const data = response.getDataTable();
+            const table = new google.visualization.Table(document.getElementById('table-div'));
+            table.draw(data, {showRowNumber: false, width: '100%', height: 'auto'});
+        }
+    </script>
+</head>
+<body>
+    <h1>High Scores</h1>
+    <div id="table-div"></div>
+</body>
+</html>
