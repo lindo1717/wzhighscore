@@ -54,23 +54,36 @@
         window.onload = fetchHighScores;
     </script>
     <style>
+        /* Set a white background for the entire page */
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             text-align: center;
+            background-color: #ffffff; /* White background */
+            color: #000000; /* Black text */
         }
+
+        /* Center the leaderboard table and set a white background */
         table {
             margin: 20px auto;
             border-collapse: collapse;
             width: 80%;
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visuals */
         }
+
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #f2f2f2; /* Light grey header background */
+        }
+
+        td {
+            background-color: #ffffff; /* Ensure table cells also have a white background */
         }
     </style>
 </head>
